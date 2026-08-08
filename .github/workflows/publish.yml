@@ -29,4 +29,7 @@ jobs:
         with:
           user: ${{ inputs.nuget_user }}
       - name: Publish package
-        run: dotnet nuget push "artifacts/*.nupkg" --api-key "${{ steps.login.outputs.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+        shell: pwsh
+        run: |
+          $package = Get-ChildItem -Path artifacts -Filter *.nupkg -File | Select-Object -First 1
+          dotnet nuget push $package.FullName --api-key "${{ steps.login.outputs.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
