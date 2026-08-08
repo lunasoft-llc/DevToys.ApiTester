@@ -1,0 +1,32 @@
+name: Publish to NuGet
+
+on:
+  workflow_dispatch:
+    inputs:
+      nuget_user:
+        description: NuGet.org username
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - run: dotnet restore ApiTester.slnx
+      - run: dotnet test ApiTester.slnx -c Release --no-restore
+      - run: dotnet pack src/DevToys.ApiTester/DevToys.ApiTester.csproj -c Release --no-restore -o artifacts
+      - name: NuGet login
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: ${{ inputs.nuget_user }}
+      - name: Publish package
+        run: dotnet nuget push "artifacts/*.nupkg" --api-key "${{ steps.login.outputs.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
