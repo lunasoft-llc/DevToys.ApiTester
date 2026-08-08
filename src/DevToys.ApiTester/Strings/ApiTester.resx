@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms</value></resheader>
+  <data name="ShortDisplayTitle" xml:space="preserve"><value>API Tester</value></data>
+  <data name="LongDisplayTitle" xml:space="preserve"><value>API Tester / Client</value></data>
+  <data name="Description" xml:space="preserve"><value>Send HTTP requests and inspect responses locally.</value></data>
+  <data name="AccessibleName" xml:space="preserve"><value>API Tester</value></data>
+  <data name="SearchKeywords" xml:space="preserve"><value>api http rest curl client request</value></data>
+</root>

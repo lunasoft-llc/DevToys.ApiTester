@@ -1,0 +1,25 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - run: dotnet restore ApiTester.slnx
+      - run: dotnet test ApiTester.slnx -c Release --no-restore
+      - run: dotnet pack src/DevToys.ApiTester/DevToys.ApiTester.csproj -c Release --no-restore -o artifacts
+      - uses: softprops/action-gh-release@v2
+        with:
+          prerelease: ${{ contains(github.ref_name, 'preview') }}
+          generate_release_notes: true
+          files: artifacts/*.nupkg

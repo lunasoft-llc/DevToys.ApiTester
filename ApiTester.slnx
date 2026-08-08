@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="src/DevToys.ApiTester/DevToys.ApiTester.csproj" />
+  <Project Path="tests/DevToys.ApiTester.Tests/DevToys.ApiTester.Tests.csproj" />
+</Solution>

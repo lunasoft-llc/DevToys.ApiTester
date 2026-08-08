@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Version>0.1.1-preview</Version>
+    <Authors>LUNASOFT</Authors>
+    <PackageId>LUNASOFT.DevToys.ApiTester</PackageId>
+    <Title>API Tester for DevToys</Title>
+    <Description>A fast, local-first API client built directly into DevToys.</Description>
+    <PackageTags>devtoys-app;api;http;curl</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageProjectUrl>https://github.com/lunasoft-llc/DevToys.ApiTester</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/lunasoft-llc/DevToys.ApiTester.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReleaseNotes>Initial preview release for DevToys Preview 2.0.9.</PackageReleaseNotes>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="DevToys.Api" Version="2.0.9-preview" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
+</Project>
